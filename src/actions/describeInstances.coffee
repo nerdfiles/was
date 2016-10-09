@@ -6,6 +6,7 @@
 import { util } from 'util'
 # NPM.
 import { AWS } from 'aws-sdk'
+import { _ } from 'lodash'
 # Infrastructure.
 import { Action } from 'mover'
 
@@ -32,5 +33,22 @@ class DescribeInstances extends Action
           ]
         }
       ]
+
+    if nextToken
+      params.NextToken = nextToken
+
+    ec2Client.describeInstances(params, (error, response) ->
+      if error
+        return callback error
+
+      _.each(response.Reservations, (reservation) ->
+        @instanceCount += reservation.Instances.length
+      )
+
+      if response.NextToken
+        recurse response.NextToken
+      else
+        callback null, @instanceCount
+    )
 
 export default DescribeInstances

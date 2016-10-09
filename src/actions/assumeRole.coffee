@@ -28,12 +28,12 @@ class ObtainInstanceCount extends Action
     @stsClient = new AWS.STS()
 
     @defaultRoleConfig =
-      RoleArn: util.format(
+      RoleSessionName : 'instance-counter'
+      DurationSeconds : 3600
+      RoleArn         : util.format(
         'arn:aws:iam::%s:role/CrossAccountInstanceCounter',
         accountId
       ),
-      RoleSessionName: 'instance-counter',
-      DurationSeconds: 3600
 
   assume: (roleConfig={}) ->
 
@@ -45,9 +45,9 @@ class ObtainInstanceCount extends Action
         if error
           return callback(error)
         ec2Client = new AWS.EC2
-          accessKeyId: response.Credentials.AccessKeyId,
-          secretAccessKey: response.Credentials.SecretAccessKey,
-          sessionToken: response.Credentials.SessionToken
+          accessKeyId     : response.Credentials.AccessKeyId
+          secretAccessKey : response.Credentials.SecretAccessKey
+          sessionToken    : response.Credentials.SessionToken
 
         DescribeInstances(ec2Client, instanceType, callback)
     )
