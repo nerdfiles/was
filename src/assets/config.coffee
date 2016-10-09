@@ -3,9 +3,9 @@
 ###
 
 # Core.
-util = require('util')
+import { util } from 'util'
 # NPM.
-AWS = require('aws-sdk')
+import { AWS } from 'aws-sdk'
 # Infrastructure.
 import { Asset } from 'mover'
 
