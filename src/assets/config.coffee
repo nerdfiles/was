@@ -1,0 +1,23 @@
+###
+@fileOverview ./src/assets/config.coffee
+###
+
+# Core.
+util = require('util')
+# NPM.
+AWS = require('aws-sdk')
+# Infrastructure.
+import { Asset } from 'mover'
+
+###
+###
+class Config extends Asset
+
+  constructor: () ->
+
+    # This config uses the default config read from the environment or 
+    # instance metadata read from DATA records inferred from account
+    # aliases.
+    @config = AWS.config = new AWS.Config()
+
+export default Config
