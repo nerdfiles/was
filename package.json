@@ -1,0 +1,27 @@
+{
+  "name": "was",
+  "version": "0.0.1",
+  "description": "Web Application Semantics provide implementation details for specifying transmedia interactions between Machines Identities and Software Identities in the context of REST-ful environments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nerdfiles/was.git"
+  },
+  "keywords": [
+    "aws"
+  ],
+  "author": "nerdfiles <nerdfiles@gmail.com>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/nerdfiles/was/issues"
+  },
+  "homepage": "https://github.com/nerdfiles/was#readme",
+  "dependencies": {
+    "aws-sdk": "^2.6.7",
+    "lodash": "^4.16.4",
+    "util": "^0.10.3"
+  }
+}
