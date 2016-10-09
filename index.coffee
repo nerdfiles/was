@@ -3,6 +3,6 @@ import { Ontology } from './interface'
 
 Promise.resolve(Ontology())
   .then('./src/assets/config')
-  .then('./src/assumeRole.coffee')
-  .then('./src/describeInstances.coffee')
+  .then('./src/actions/assumeRole')
+  .then('./src/actions/describeInstances')
 
