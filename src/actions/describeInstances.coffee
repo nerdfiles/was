@@ -27,9 +27,15 @@ class DescribeInstances extends Action
     params =
       Filters: [
         {
-          Name: 'instance-type',
-          Values: [
+          Name   : 'instance-type',
+          Values : [
             instanceType
+          ]
+        },
+        {
+          Name   : 'instance-state-name',
+          Values : [
+            'running'
           ]
         }
       ]
