@@ -10,7 +10,11 @@ import { AWS } from 'aws-sdk'
 import { Asset } from 'mover'
 
 ###
+Configuration.
+
+@param {String} ...
 ###
+
 class Config extends Asset
 
   constructor: () ->
