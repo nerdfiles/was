@@ -24,4 +24,7 @@ class Config extends Asset
     # aliases.
     @config = AWS.config = new AWS.Config()
 
+  initialize: () ->
+    console.log(@config)
+
 export default Config

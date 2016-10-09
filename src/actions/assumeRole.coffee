@@ -8,6 +8,8 @@ import { util } from 'util'
 import { AWS } from 'aws-sdk'
 # Infrastructure.
 import { Action } from 'mover'
+# Actions.
+import { DescribeInstances } from './describeInstances'
 
 ###
 Obtain the running instance count for a particular type from another account.
@@ -25,5 +27,29 @@ class ObtainInstanceCount extends Action
     # instance metadata.
     @stsClient = new AWS.STS()
 
+    @defaultRoleConfig =
+      RoleArn: util.format(
+        'arn:aws:iam::%s:role/CrossAccountInstanceCounter',
+        accountId
+      ),
+      RoleSessionName: 'instance-counter',
+      DurationSeconds: 3600
+
+  assume: (roleConfig={}) ->
+
+    let loadedRoleConfig = roleConfig || @defaultRoleConfig
+
+    @stsClient.assumeRole(
+        loadedRoleConfig
+      , (error, response) ->
+        if error
+          return callback(error)
+        ec2Client = new AWS.EC2
+          accessKeyId: response.Credentials.AccessKeyId,
+          secretAccessKey: response.Credentials.SecretAccessKey,
+          sessionToken: response.Credentials.SessionToken
+
+        DescribeInstances(ec2Client, instanceType, callback)
+    )
 
 export default obtainInstanceCount
