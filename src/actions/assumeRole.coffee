@@ -52,4 +52,4 @@ class ObtainInstanceCount extends Action
         DescribeInstances(ec2Client, instanceType, callback)
     )
 
-export default obtainInstanceCount
+export default ObtainInstanceCount
