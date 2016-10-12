@@ -1,5 +1,5 @@
 was = require('was')
-view = require('./view')
+View = require('./view')
 
 export default =
-  exampleName: was.environment view.exampleName
+  exampleName: was.environment View.exampleName
