@@ -105,18 +105,20 @@ Information addresses in its Discovery Layer.
 
 ```coffeescript
 # lambda endpoint
+# ./operation.coffee
 
 was = require('was');
-view = require('./src/view');
+View = require('./view');
 
 export default =
-  exampleName: was.environment view.exampleName
+  exampleName: was.environment View.exampleName
 
-# ./src/view.coffee
+# ./view.coffee
 
-Response = require('response')
+Response = require('was/response')
 
-module.exports =
+export default =
   exampleName: (req, env) =>
-    return new Response(`this is an example in ${env.stage}`, 200)
+    exampleText = `this is an example in ${env.stage}`
+    return new Response(exampleText, 200)
 ```
