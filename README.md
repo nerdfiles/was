@@ -100,3 +100,23 @@ such that concurrency supported by failure detection, timing assumptions,
 probabilistic outcome scores from complexity analysis, and universality
 as an indication of strong primitives, of which the Periodic Table of
 Information addresses in its Discovery Layer.
+
+## Structural Activities
+
+```coffeescript
+# lambda endpoint
+
+was = require('was');
+view = require('./src/view');
+
+export default =
+  exampleName: was.environment view.exampleName
+
+# ./src/view.coffee
+
+Response = require('response')
+
+module.exports =
+  exampleName: (req, env) =>
+    return new Response(`this is an example in ${env.stage}`, 200)
+```

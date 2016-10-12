@@ -40,16 +40,18 @@ class ObtainInstanceCount extends Action
     let loadedRoleConfig = roleConfig || @defaultRoleConfig
 
     @stsClient.assumeRole(
-        loadedRoleConfig
-      , (error, response) ->
-        if error
-          return callback(error)
-        ec2Client = new AWS.EC2
-          accessKeyId     : response.Credentials.AccessKeyId
-          secretAccessKey : response.Credentials.SecretAccessKey
-          sessionToken    : response.Credentials.SessionToken
-
-        DescribeInstances(ec2Client, instanceType, callback)
+      loadedRoleConfig,
+      assumedRole
     )
+
+    assumedRole = (error, response) ->
+      if error
+        return callback(error)
+      ec2Client = new AWS.EC2
+        accessKeyId     : response.Credentials.AccessKeyId
+        secretAccessKey : response.Credentials.SecretAccessKey
+        sessionToken    : response.Credentials.SessionToken
+
+      DescribeInstances(ec2Client, instanceType, callback)
 
 export default ObtainInstanceCount
