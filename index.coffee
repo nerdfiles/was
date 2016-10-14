@@ -1,10 +1,6 @@
-import { Promise } from 'bluebird'
-import { Ontology } from './interface'
+partialRight = require('lodash.partialright')
+dispatcher = require('./src/assets/environment')
 
-require("nodejs-dashboard")
-
-Promise.resolve(Ontology())
-  .then('./src/assets/config')
-  .then('./src/actions/assumeRole')
-  .then('./src/actions/describeInstances')
-
+export default =
+  environment: (action, middleware) ->
+    partialRight(environment, action, middleware)

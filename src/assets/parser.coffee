@@ -1,8 +1,8 @@
-ReqStream = require './request.stream'
+Stream = require './stream'
 
 class Parser
   analyzeEvent: (event) ->
-    new ReqStream(
+    new Stream(
       @analyzePath(event.path),
       @analyzeMethod(event.httpMethod),
       @analyzeHeaders(event.headers),

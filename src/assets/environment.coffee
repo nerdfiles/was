@@ -1,25 +1,34 @@
-Request = require('./request')
-LamdaParser = require('./lamda.parser')
+###
+@fileOverview ./src/assets/environment.coffee
+###
 
-environment = (event, context, callback, action, middleware) ->
+# Infrastructure.
+Request = require('./request')
+Parser = require('./parser')
+
+environment = (event, context, callback, action, middlewares) ->
+  ###
+  @name environment
+  ###
+
   stage = event.requestContext.stage.toUpperCase()
   env =
     stage: stage
     debug: ['DEV', 'QA', 'TEST'].indexOf(stage) >= -1
 
-  if typeof middleware !== 'object'
-    middleware = []
-  mwInstance = []
+  if typeof middlewares !== 'object'
+    middlewares = []
+  middleware = []
 
   try
     req = new Request(event, new LamdaParser())
-    mwInstances = middleware.map((m) =>
+    middleware = middlewares.map((m) =>
       new m(req, env)
     )
-    mwObjs = mwInstances.map((instance) =>
+    wares = middleware.map((instance) =>
       instance.create()
     )
-    res = action.apply(null, [req, env].concat(mwObjs))
+    res = action.apply(null, [req, env].concat(wares))
     context.done(null, res.simplify())
   catch err
     context.done err
