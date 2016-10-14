@@ -1,6 +1,8 @@
 import { Promise } from 'bluebird'
 import { Ontology } from './interface'
 
+require("nodejs-dashboard")
+
 Promise.resolve(Ontology())
   .then('./src/assets/config')
   .then('./src/actions/assumeRole')

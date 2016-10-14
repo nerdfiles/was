@@ -4,7 +4,7 @@
   "description": "Web Application Semantics provide implementation details for specifying transmedia interactions between Machines Identities and Software Identities in the context of REST-ful environments.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodejs-dashboard node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
     "aws-sdk": "^2.6.7",
     "lodash": "^4.16.4",
     "util": "^0.10.3"
+  },
+  "devDependencies": {
+    "nodejs-dashboard": "^0.1.0"
   }
 }
