@@ -30,6 +30,7 @@ environment = (event, context, callback, action, middlewares) ->
     wares = middleware.map((item) ->
       item.create()
     )
+    #[_err, _res] = event.body env
     res = action.apply(null, [req, env].concat(wares))
     context.done(null, res.render())
   catch err
