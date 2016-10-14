@@ -1,3 +1,18 @@
+###
+@fileOverview ./src/assets/store.key.coffee
+@description
+###
+
+# Core.
+_ = require('lodash')
+
+###
+  Attributes:
+    has
+    get
+    all
+###
+
 class KeyStore
   constructor: (store) ->
     @store = store
@@ -13,7 +28,7 @@ class KeyStore
     else return defaultVal
 
   all: () ->
-    Object.assign {}, @store
+    _.assign {}, @store
 
 export default KeyStore
 

@@ -31,7 +31,7 @@ environment = (event, context, callback, action, middlewares) ->
       item.create()
     )
     res = action.apply(null, [req, env].concat(wares))
-    context.done(null, res.express())
+    context.done(null, res.render())
   catch err
     context.done err
   finally

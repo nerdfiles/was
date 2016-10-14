@@ -10,9 +10,9 @@ class Response
         @code = code
         break
       default:
-        throw new TypeError 'Res code must be an int'
+        throw new TypeError 'Response code must be an integer.'
 
-  express: () ->
+  render: () ->
     statusCode:  @code
     body:        JSON.stringify @body
 
