@@ -2,6 +2,8 @@
 @fileOverview ./src/assets/environment.coffee
 ###
 
+# Core.
+_ = require('lodash')
 # Infrastructure.
 Request = require('./request')
 Parser = require('./parser')
@@ -16,25 +18,25 @@ environment = (event, context, callback, action, middlewares) ->
     stage: stage
     debug: ['DEV', 'QA', 'TEST'].indexOf(stage) >= -1
 
-  if typeof middlewares !== 'object'
+  if not _.isArray(middlewares)
     middlewares = []
   middleware = []
 
   try
     req = new Request(event, new LamdaParser())
-    middleware = middlewares.map((m) =>
+    middleware = middlewares.map((m) ->
       new m(req, env)
     )
-    wares = middleware.map((instance) =>
-      instance.create()
+    wares = middleware.map((item) ->
+      item.create()
     )
     res = action.apply(null, [req, env].concat(wares))
     context.done(null, res.simplify())
   catch err
     context.done err
   finally
-    mwInstances.forEach((instance) =>
-      instance.destroy()
+    middlewares.forEach((middleware) ->
+      middleware.destroy()
     )
 
 export default environment
