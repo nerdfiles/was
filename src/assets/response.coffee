@@ -12,7 +12,7 @@ class Response
       default:
         throw new TypeError 'Res code must be an int'
 
-  simplify: () ->
+  express: () ->
     statusCode:  @code
     body:        JSON.stringify @body
 
