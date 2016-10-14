@@ -1,6 +1,6 @@
 KeyStore = require('./store.key')
 
-class RequestStream
+class Stream
   constructor: (path, method, headers, body, query) ->
     @private = {}
     @private.path = path
@@ -10,10 +10,10 @@ class RequestStream
     @private.query = query
 
   @getter 'path', () ->
-    @data.private.path
+    @private.path
 
   @getter 'method', () ->
-    @data.private.method
+    @private.method
 
   @getter 'query', () ->
     @private.query
@@ -25,7 +25,7 @@ class RequestStream
     @private.query
 
   stringify: () ->
-    @data.stringify @private
+    JSON.stringify @private
 
 export default RequestStream
 
