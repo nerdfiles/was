@@ -1,4 +1,5 @@
 KeyStore = require('./store.key')
+require('./function')
 
 class Request
   constructor: (event, transformer) ->

@@ -1,4 +1,5 @@
 KeyStore = require('./store.key')
+require('./function')
 
 class Stream
   constructor: (path, method, headers, body, query) ->
@@ -27,5 +28,5 @@ class Stream
   stringify: () ->
     JSON.stringify @private
 
-export default RequestStream
+export default Stream
 
