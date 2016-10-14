@@ -1,11 +1,13 @@
 Response = require('was/response')
+Toffee = require('toffee')
 
 export default =
-  exampleName: (req, env) =>
+  exampleName: (req, env) ->
     exampleText = '''
 
       this is an example in #{env.stage}
 
     '''
-    return new Response(exampleText, 200)
+    tmpl = Toffee.compileStr exampleText
+    return new Response(tmpl, 200)
 
