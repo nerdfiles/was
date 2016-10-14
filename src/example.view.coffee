@@ -5,7 +5,7 @@ export default =
   exampleName: (req, env) ->
     exampleText = '''
 
-      this is an example in #{env.stage}
+      environment: #{env.stage}
 
     '''
     tmpl = Toffee.compileStr exampleText
