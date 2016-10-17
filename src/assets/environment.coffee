@@ -23,7 +23,7 @@ environment = (event, context, callback, action, middlewares) ->
   middleware = []
 
   try
-    req = new Request(event, new LamdaParser())
+    req = new Request(event, new Parser())
     middleware = middlewares.map((m) ->
       new m(req, env)
     )
