@@ -1,7 +1,7 @@
 Response = require('was/response')
 Toffee = require('toffee')
 
-export default =
+View =
   exampleName: (req, env) ->
     exampleText = '''
 
@@ -11,3 +11,4 @@ export default =
     tmpl = Toffee.compileStr exampleText
     return new Response(tmpl, 200)
 
+export default View

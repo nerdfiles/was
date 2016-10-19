@@ -1,6 +1,8 @@
 partialRight = require('lodash.partialright')
-dispatcher = require('./src/assets/environment')
+environ = require('./src/assets/environment')
 
-export default =
+__environment__ =
   environment: (action, middleware) ->
-    partialRight(environment, action, middleware)
+    partialRight(environ, action, middleware)
+
+export default __environment__

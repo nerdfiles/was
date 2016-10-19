@@ -110,15 +110,25 @@ Information addresses in its Discovery Layer.
 was = require('was');
 View = require('./view');
 
-export default =
+Operation =
   exampleName: was.environment View.exampleName
+
+export default Operation
 
 # ./view.coffee
 
 Response = require('was/response')
+Toffee = require('toffee')
 
-export default =
+View =
   exampleName: (req, env) =>
-    exampleText = `this is an example in ${env.stage}`
+    exampleText = '''
+
+      environment: #{env.stage}
+
+    '''
+    tmpl = Toffee.compileStr exampleText
     return new Response(exampleText, 200)
+
+export default View
 ```
