@@ -117,7 +117,7 @@ export default Operation
 
 # ./view.coffee
 
-Response = require('was/response')
+Response = require('was/src/assets/response')
 Toffee = require('toffee')
 
 View =
