@@ -1,16 +1,15 @@
+###
+@fileOverview ./src/assets/response.coffee
+###
+
 class Response
   constructor: (body, code) ->
     @body = body
 
     switch typeof code
-      case 'undefined':
-        @code = 200
-        break
-      case 'number':
-        @code = code
-        break
-      default:
-        throw new TypeError 'Response code must be an integer.'
+      when 'undefined' then @code = 200
+      when 'number' then @code = code
+      else throw new TypeError 'Response code must be an integer.'
 
   render: () ->
     statusCode:  @code

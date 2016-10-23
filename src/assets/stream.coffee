@@ -1,3 +1,7 @@
+###
+@fileOverview ./src/assets/stream.coffee
+###
+
 KeyStore = require('./store.key')
 require('./function')
 

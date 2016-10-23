@@ -11,8 +11,6 @@ import { Asset } from 'mover'
 
 ###
 Configuration.
-
-@param {String} ...
 ###
 
 class Config extends Asset
