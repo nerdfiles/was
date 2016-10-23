@@ -1,9 +1,27 @@
+###
+@fileOverview ./src/assets/request.coffee
+Passing queries into key store.
+###
+
 KeyStore = require('./store.key')
 require('./function')
 
+###
+###
+
 class Request
-  constructor: (event, transformer) ->
-    @data = transformer.analyzeEvent(event)
+
+  ###
+  @name Request:constructor
+  @param {object} event Event fired.
+  @param {object} parser Parser provided.
+  ###
+
+  constructor: (event, parser) ->
+    @data = parser.analyzeEvent(event)
+
+  stringify: () ->
+    @data.stringify()
 
   @getter 'path', () ->
     @data.path
@@ -19,8 +37,5 @@ class Request
 
   @getter 'body', () ->
     new KeyStore @data.body
-
-  stringify: () ->
-    @data.stringify()
 
 export default Request

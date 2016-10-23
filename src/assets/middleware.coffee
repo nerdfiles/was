@@ -1,4 +1,9 @@
+###
+@fileOverview ./src/assets/middleware.coffee
+###
+
 class Middleware
+
   constructor: (req, env) ->
     @req = req
     @env = env

@@ -1,6 +1,20 @@
+###
+@fileOverview ./src/assets/parser.coffee
+###
+
 Stream = require './stream'
 
+###
+@class
+@name Parser
+###
+
 class Parser
+
+  ###
+  @name analyzeEvent
+  ###
+
   analyzeEvent: (event) ->
     new Stream(
       @analyzePath(event.path),

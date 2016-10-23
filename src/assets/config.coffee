@@ -7,13 +7,13 @@ import { util } from 'util'
 # NPM.
 import { AWS } from 'aws-sdk'
 # Infrastructure.
-import { Asset } from 'mover'
+import { Config } from 'mover'
 
 ###
 Configuration.
 ###
 
-class Config extends Asset
+class Configuration extends Config
 
   constructor: () ->
 
@@ -25,4 +25,4 @@ class Config extends Asset
   initialize: () ->
     console.log(@config)
 
-export default Config
+export default Configuration

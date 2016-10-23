@@ -5,7 +5,21 @@
 KeyStore = require('./store.key')
 require('./function')
 
+###
+@class
+@name Stream
+###
+
 class Stream
+
+  ###
+  @param {string} path URL path.
+  @param {string} method HTTP Methods: GET, POST, PUT, PATCH, OPTIONS, DELETE
+  @param {object} headers Request headers.
+  @param {string} body Request body.
+  @param {string} query Query.
+  ###
+
   constructor: (path, method, headers, body, query) ->
     @private = {}
     @private.path = path

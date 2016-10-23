@@ -3,10 +3,10 @@
 ###
 
 # Core.
-_ = require('lodash')
+import { _ } from 'lodash'
 # Infrastructure.
-Request = require('./request')
-Parser = require('./parser')
+import { Request } from './request'
+import { Parser } from './parser'
 
 environment = (event, context, callback, action, middlewares) ->
   ###
