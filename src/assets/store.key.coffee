@@ -4,7 +4,7 @@
 ###
 
 # Core.
-_ = require('lodash')
+import { _ } from 'lodash'
 
 ###
   Attributes:
@@ -14,6 +14,7 @@ _ = require('lodash')
 ###
 
 class KeyStore
+
   constructor: (store) ->
     @store = store
 

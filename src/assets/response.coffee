@@ -2,6 +2,11 @@
 @fileOverview ./src/assets/response.coffee
 ###
 
+###
+@jsdoc class
+@name Response
+###
+
 class Response
 
   ###

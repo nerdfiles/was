@@ -3,10 +3,12 @@
 Passing queries into key store.
 ###
 
-KeyStore = require('./store.key')
-require('./function')
+import { KeyStore } from './store.key'
+import './function'
 
 ###
+@jsdoc class
+@name Request
 ###
 
 class Request

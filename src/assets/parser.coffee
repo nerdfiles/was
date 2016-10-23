@@ -2,7 +2,7 @@
 @fileOverview ./src/assets/parser.coffee
 ###
 
-Stream = require './stream'
+import { Stream } from './stream'
 
 ###
 @class
