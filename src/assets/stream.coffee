@@ -2,8 +2,8 @@
 @fileOverview ./src/assets/stream.coffee
 ###
 
-KeyStore = require('./store.key')
-require('./function')
+import { KeyStore } from './store.key'
+import './function'
 
 ###
 @class
