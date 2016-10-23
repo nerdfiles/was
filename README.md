@@ -121,7 +121,7 @@ Response = require('was/src/assets/response')
 Toffee = require('toffee')
 
 View =
-  exampleName: (req, env) =>
+  exampleName: (req, env) ->
     exampleText = '''
 
       environment: #{env.stage}
