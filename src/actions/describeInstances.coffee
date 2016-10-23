@@ -44,15 +44,14 @@ class DescribeInstances extends Action
       params.NextToken = nextToken
 
     ec2Client.describeInstances(params, (error, response) ->
-      if error
-        return callback error
+      callback error  if error?
 
       _.each(response.Reservations, (reservation) ->
         @instanceCount += reservation.Instances.length
       )
 
       if response.NextToken
-        recurse response.NextToken
+        @recurse response.NextToken
       else
         callback null, @instanceCount
     )

@@ -37,7 +37,7 @@ class ObtainInstanceCount extends Action
 
   assume: (roleConfig={}) ->
 
-    let loadedRoleConfig = roleConfig || @defaultRoleConfig
+    loadedRoleConfig = roleConfig || @defaultRoleConfig
 
     @stsClient.assumeRole(
       loadedRoleConfig,
